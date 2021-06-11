@@ -1,7 +1,7 @@
 ---
 title: "Final Project for the course: 2020/21/2 DPSZ16-KVAN-106 1"
 author: "Alex Ilyés"
-date: '2021 04 09 - 2021 06 11'
+date: '2021 06 11'
 output: html_document
 editor_options: 
   chunk_output_type: console
