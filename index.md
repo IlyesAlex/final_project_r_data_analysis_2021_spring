@@ -45,7 +45,7 @@ anime <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidy
 
 # Data Cleaning
 
-First, I clean our data to have an adjusted dataset that is suitable for later analysis. To this end, I do some filtering and modification:
+First, I clean the data to have an adjusted dataset that is suitable for later analysis. To this end, I do some filtering and modification:
 - I am only interested in anime TV series, so I will filter out movies
 - I am only interested in which year and season it premiered - derived from "premiered"
 - For one anime there are multiple producers, but the most important contribution is from the animating studio. Therefore I do not want to have the data duplicated for each producer and studios, so I aggregate those variable. For modelling analysis, I will only deal with animes that have one animating studio.
