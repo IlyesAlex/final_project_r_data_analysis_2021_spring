@@ -26,7 +26,7 @@ library(tidylo)
 
 ```
 
-### Loading in the data
+# Loading in the data
 
 For this final assingment project, I will use the Anime dataset from TidyTuesday's 2019-04-03 occasion:
 
@@ -48,7 +48,7 @@ anime <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidy
 
 ```
 
-### Data Cleaning
+# Data Cleaning
 
 First, I clean our data to have an adjusted dataset that is suitable for later analysis. To this end, I do some filtering and modification:
 - I am only interested in anime TV series, so I will filter out movies
@@ -84,7 +84,7 @@ anime_cleaned_model = anime_cleaned_aggregated %>%
 
 ```
 
-#Cleaning for modelling
+## Cleaning for modelling
 
 After the initial cleaning, for exploratory analysis I will use the long or the aggregated version of the data.
 For the modelling part, I further check the histograms of the data:
@@ -195,7 +195,7 @@ anime_cleaned_model  %>%
 Favorites and members (number of members who favorited or added anime to their personal list) are still skewed, however I won't filter further, and I won't use these metrics in the modeling.
 
 
-### Exploratory Analysis
+# Exploratory Analysis
 
 First off, I do some exploratory analysis, to know more about the dataset.
 
@@ -208,7 +208,7 @@ I will investigate the following:
 5. Is anime for kids - age rating and scores?
 6. Are there seasonal trends? I will do a tokenized vocabulary analysis for words that describe shows from different seasons (based on: https://www.youtube.com/watch?v=3PecUbnuYC4)
 
-# 1. Most mainstream animes
+## 1. Most mainstream animes
 
 We will check the most mainstream animes based on how many people put them amongst their favorites and how many users scored them at all.
 
@@ -255,7 +255,7 @@ anime_cleaned_aggregated %>%
 Nice! We can see some overlap:
  - Death Note, Full metal Alchemist, Shingeki no Kyojin, etc. these are animes that were not only very popular in Japan but also in the West
  
-#2. Rank vs. popularity
+## 2. Rank vs. popularity
 
 Both of these measures are ordinal scales that range from 1 (the best) to the number of all animes.
  - Rank is given by the MyAnimeList algorithm (weighing raw ratings), while 
@@ -302,7 +302,7 @@ anime_cleaned_aggregated %>%
   
 ```
 
-#3. Shounen vs. shoujo over the years
+## 3. Shounen vs. shoujo over the years
 
 There are two anime-specific genres in Japan, the Shounen and the Shoujo genre, which stand for the words "boy" and "girl" respectively. Therefore, these signify male- or female aduience oriented stories:
   - Shounen typically follow a young (12-18 yo.) boy through action-packed, fantastic stories about battles and trials.
@@ -350,7 +350,7 @@ There is an interesting pattern here. If we look closely there are spikes of sho
 
 There is a year 1976, where no Shoujo were relaesed at all. Besides, Shounen is ever increaseing in popularity, and the ratio shifts towards it continously.
 
-#4. Genre "fingerprint" of studios
+## 4. Genre "fingerprint" of studios
 
 Based on the TidyTuesday screencast (https://www.youtube.com/watch?v=EHqFDXa-sH4), I will try to find out whether there are any distinguishable or meaningful profiles of different popular animating studios. 
 For animes, usually a studio name is very telling for fans, much like in Hollywood, where for instance you know that Blumhouse equals horrors and A24 equals arthouse. Let's find out these typicalities.
@@ -402,7 +402,7 @@ However, if we look at the other genres, there are clear distinctions appearing,
   - Toei Animation produces shounen, action and adventure, and Tokyo Ghoul is one of the most appreciated shounen titles in decades.
   - Sunrise has sci-fi on top, closely followed by mecha which is an anime-original genre depicting people fighting in mechanical suits. Their most successful title, Code Geass is actually one of the most known mecha anime out there.
 
-#5 Is anime for children?
+## 5 Is anime for children?
 
 We have data about the age rating of the shows, so we could visualize whether the highest scored or most popular animes are rated for children or above. 
 
@@ -425,7 +425,7 @@ It appears that animes are scored better the more mature they get, but when it i
 The best animes according to scores are rated R or PG-13, which include the teens and young adult oriented shows, who are the major part of the audience.
 Based on the figures, animes are appreciated more when they are not for children and involve more mature conflicts.
 
-#6 Are there seasonal trends in terms of narratives?
+## 6. Are there seasonal trends in terms of narratives?
 
 For this analysis, I use the approach taken from the TidyTuesday screencast (https://www.youtube.com/watch?v=3PecUbnuYC4), whereby one can use TidyText to tokenize running text and investigate the vocabulary and word usage of certain groups.
 I will check whether there exists any trend that could differentiate the word usage of anime description starting in different seasons. E.g. one could expect to have more grim animes for the winter, or more lighthearted ones for the summer.
@@ -522,7 +522,7 @@ After proper cleaning, the data still does not show any real observable trends. 
 
 Altogether, this data does not really show too many interesting observations, due to the premiere seasons not being too distinctive, only in terms of name usage.
 
-### Modelling
+# Modelling
 
 For modelling, I ask question that is probably the most interesting for any studios or aspiring anime creators: "What makes anime succesful?"
 
@@ -540,7 +540,7 @@ summary(anime_complex_model)
 
 ```
 
-# Checking for influential outliers
+### Checking for influential outliers
 
 Check for outlier values in the model.
 
@@ -581,7 +581,7 @@ anime_complex_model6 = lm(members ~ premiere_season + diversity + rating + score
 
 ```
 
-# Checking assumptions
+### Checking assumptions
 
 Check the normality assumption.
 
@@ -626,7 +626,7 @@ summary(anime_complex_model_noscore)
 
 ```
 
-# Checking for influential outliers
+### Checking for influential outliers
 
 Check for outlier values in the model.
 
@@ -661,7 +661,7 @@ anime_complex_model_noscore4 = lm(members ~ premiere_season + diversity + rating
 
 ```
 
-# Checking assumptions
+### Checking assumptions
 
 Check the normality assumption.
 
@@ -752,7 +752,7 @@ anime_model_coef_table
 
 ```
 
-### Conclusions
+# Conclusions
 
 ## Exploratory analysis
 
@@ -765,7 +765,7 @@ Visualizing the anime datasets, we saw some interesting trends:
   5. Animes for more mature audiences are better scored, but too mature animes are not.
   6. There are no real observable trends of anime synopses using distinct vocabulary based on the premiere season.
 
-##Modelling
+## Modelling
 
 For the modelling part, there were some limitations. The dependent varaible was log transformed, so we may have lost some precision in our prediction. There were also many categorical independent variables, which introduced a great amount of df, which made the model less precise and robust.
 
